@@ -1,0 +1,60 @@
+﻿@model Kleide.Models.Asmuo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Asmuo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vardas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vardas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavarde)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pavarde)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefonas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefonas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Miestas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Miestas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Salis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Salis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adresas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PastoKodas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PastoKodas)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AsmensKodas">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

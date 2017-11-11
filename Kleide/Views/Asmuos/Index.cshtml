@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Kleide.Models.Asmuo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vardas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pavarde)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefonas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Miestas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adresas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PastoKodas)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vardas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pavarde)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefonas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miestas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PastoKodas)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AsmensKodas">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AsmensKodas">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AsmensKodas">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,105 @@
+﻿@model Kleide.Models.Preke
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Preke</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavadinimas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pavadinimas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dydis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dydis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Spalva)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Spalva)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aprasymas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aprasymas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nuotrauka)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nuotrauka)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PridejimoData)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PridejimoData)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NuomosSkaicius)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NuomosSkaicius)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bukle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bukle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PagaminimoSalis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PagaminimoSalis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArRankuDarbo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArRankuDarbo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RezervavimoTipas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RezervavimoTipas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkNuomanuomosNumerisNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkNuomanuomosNumerisNavigation.NuomosNumeris)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPirkimasuzsakymoNumerisNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkPirkimasuzsakymoNumerisNavigation.UzsakymoNumeris)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkSandelysidSandelysNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkSandelysidSandelysNavigation.IdSandelys)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdPreke" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
