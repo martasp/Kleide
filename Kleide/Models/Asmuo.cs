@@ -12,7 +12,7 @@ namespace Kleide.Models
             PirkimasFkAsmuoasmensKodas1Navigation = new HashSet<Pirkimas>();
             PirkimasFkAsmuoasmensKodasNavigation = new HashSet<Pirkimas>();
         }
-
+        public string AsmesnsId { get; set; }
         public int AsmensKodas { get; set; }
         public string Vardas { get; set; }
         public string Pavarde { get; set; }

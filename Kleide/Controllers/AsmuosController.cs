@@ -6,16 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Kleide.Controllers
 {
     public class AsmuosController : Controller
     {
         private readonly KleideContext _context;
-
-        public AsmuosController(KleideContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public AsmuosController(KleideContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Asmuos
@@ -25,21 +27,18 @@ namespace Kleide.Controllers
         }
 
         // GET: Asmuos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> MyInfo()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            var user = await GetCurrentUserAsync();
+            var userId = user?.Id;
             var asmuo = await _context.Asmuo
-                .SingleOrDefaultAsync(m => m.AsmensKodas == id);
+                .SingleOrDefaultAsync(m => m.AsmesnsId == userId);
             if (asmuo == null)
             {
                 return NotFound();
             }
 
-            return View(asmuo);
+            return View("Details", asmuo);
         }
 
         // GET: Asmuos/Create
@@ -57,27 +56,27 @@ namespace Kleide.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
+                var userId = user?.Id;
+                asmuo.AsmesnsId = userId;
                 _context.Add(asmuo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(asmuo);
         }
-
-        // GET: Asmuos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        // GET: Asmuos/myInfo
+        public async Task<IActionResult> MyInfoEdit()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var asmuo = await _context.Asmuo.SingleOrDefaultAsync(m => m.AsmensKodas == id);
+            var user = await GetCurrentUserAsync();
+            var userId = user?.Id;
+            var asmuo = await _context.Asmuo.SingleOrDefaultAsync(m => m.AsmesnsId == userId);
             if (asmuo == null)
             {
                 return NotFound();
             }
-            return View(asmuo);
+            return View("Edit", asmuo);
         }
 
         // POST: Asmuos/Edit/5

@@ -1,13 +1,9 @@
 ﻿@model Kleide.Models.Asmuo
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Mano Informacija";
 }
-
-<h2>Details</h2>
-
+<h2>Mano Informacija</h2>
 <div>
-    <h4>Asmuo</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -55,6 +51,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.AsmensKodas">Edit</a> |
+    <a asp-action="myInfoEdit">Keisti Profilio informacija</a> |
     <a asp-action="Index">Back to List</a>
 </div>
