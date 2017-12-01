@@ -84,13 +84,11 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AsmensKodas,Vardas,Pavarde,Telefonas,Miestas,Salis,Adresas,PastoKodas")] Asmuo asmuo)
+        public async Task<IActionResult> Edit(string id, [Bind("AsmesnsId,AsmensKodas,Vardas,Pavarde,Telefonas,Miestas,Salis,Adresas,PastoKodas")] Asmuo asmuo)
         {
-            if (id != asmuo.AsmensKodas)
-            {
-                return NotFound();
-            }
-
+            var user = await GetCurrentUserAsync();
+            var userId = user?.Id;
+            asmuo.AsmesnsId = userId;
             if (ModelState.IsValid)
             {
                 try
