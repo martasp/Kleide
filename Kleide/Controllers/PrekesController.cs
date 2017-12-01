@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
+    //[Authorize]
     public class PrekesController : Controller
     {
         private readonly KleideContext _context;
@@ -26,6 +28,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Details/5
+    
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

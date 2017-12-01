@@ -45,15 +45,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.RezervavimoTipas)
                 </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FkNuomanuomosNumerisNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FkPirkimasuzsakymoNumerisNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FkSandelysidSandelysNavigation)
-            </th>
+         
             <th></th>
         </tr>
     </thead>
@@ -94,15 +86,6 @@
                 @Html.DisplayFor(modelItem => item.RezervavimoTipas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FkNuomanuomosNumerisNavigation.NuomosNumeris)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FkPirkimasuzsakymoNumerisNavigation.UzsakymoNumeris)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FkSandelysidSandelysNavigation.IdSandelys)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPreke">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IdPreke">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdPreke">Delete</a>
@@ -110,4 +93,7 @@
         </tr>
 }
     </tbody>
+
+    @model[0].Spalva
+
 </table>
