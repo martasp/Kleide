@@ -83,11 +83,14 @@ namespace Kleide.Controllers
                     SumoketaSuma = 0,
                 };
 
-
-                _context.Mokejimas.Add(mokejimas);
-                _context.Add(pirkimas);
-                await _context.SaveChangesAsync();
-                return View(nameof(Details), mokejimas);
+                if (!PirkimasExists(pirkimas.UzsakymoNumeris))
+                {
+                    _context.Mokejimas.Add(mokejimas);
+                    _context.Add(pirkimas);
+                    await _context.SaveChangesAsync();
+                    return Redirect($"../../mokejimas/Details/{mokejimas.MokejimoId}");
+                }
+                return Redirect($"../../mokejimas/Details/{mokejimas.MokejimoId}");
             }
             ViewData["FkAsmuoasmensKodas1"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas", pirkimas.FkAsmuoasmensKodas1);
             ViewData["FkAsmuoasmensKodas"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas", pirkimas.FkAsmuoasmensKodas);
