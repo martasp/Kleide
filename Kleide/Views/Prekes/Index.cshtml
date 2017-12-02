@@ -12,88 +12,86 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Pavadinimas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Dydis)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Spalva)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Aprasymas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nuotrauka)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PridejimoData)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NuomosSkaicius)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Bukle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PagaminimoSalis)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ArRankuDarbo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RezervavimoTipas)
-                </th>
-         
+            <th>
+                @Html.DisplayNameFor(model => model.Pavadinimas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dydis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Spalva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aprasymas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nuotrauka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PridejimoData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NuomosSkaicius)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bukle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagaminimoSalis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArRankuDarbo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RezervavimoTipas)
+            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pavadinimas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dydis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Spalva)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aprasymas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nuotrauka)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PridejimoData)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NuomosSkaicius)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bukle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PagaminimoSalis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArRankuDarbo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RezervavimoTipas)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPreke">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPreke">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPreke">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pavadinimas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dydis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Spalva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aprasymas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nuotrauka)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PridejimoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuomosSkaicius)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bukle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PagaminimoSalis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArRankuDarbo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RezervavimoTipas)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPreke">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdPreke">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdPreke">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
-
-    @model[0].Spalva
-
 </table>

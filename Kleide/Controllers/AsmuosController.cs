@@ -35,7 +35,7 @@ namespace Kleide.Controllers
                 .SingleOrDefaultAsync(m => m.AsmesnsId == userId);
             if (asmuo == null)
             {
-                return NotFound();
+                return View("Create", asmuo);
             }
 
             return View("Details", asmuo);
@@ -86,6 +86,7 @@ namespace Kleide.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("AsmesnsId,AsmensKodas,Vardas,Pavarde,Telefonas,Miestas,Salis,Adresas,PastoKodas")] Asmuo asmuo)
         {
+
             var user = await GetCurrentUserAsync();
             var userId = user?.Id;
             asmuo.AsmesnsId = userId;
