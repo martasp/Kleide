@@ -235,8 +235,8 @@ namespace Kleide.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
 
-                    _context.Asmuo.Add(new Asmuo { AsmensKodas = Convert.ToInt32(user.Id) });
-
+                    _context.Asmuo.Add(new Asmuo { AsmesnsId = user.Id });
+                    await _context.SaveChangesAsync();
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
