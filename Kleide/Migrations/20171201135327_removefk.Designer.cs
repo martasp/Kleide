@@ -11,9 +11,10 @@ using System;
 namespace Kleide.Migrations
 {
     [DbContext(typeof(KleideContext))]
-    partial class KleideContextModelSnapshot : ModelSnapshot
+    [Migration("20171201135327_removefk")]
+    partial class removefk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,8 +133,6 @@ namespace Kleide.Migrations
                         .HasColumnName("adresas")
                         .HasMaxLength(255)
                         .IsUnicode(false);
-
-                    b.Property<string>("AsmesnsId");
 
                     b.Property<string>("Miestas")
                         .HasColumnName("miestas")

@@ -17,9 +17,9 @@ namespace Kleide.Models
         public bool? ArRankuDarbo { get; set; }
         public string RezervavimoTipas { get; set; }
         public int IdPreke { get; set; }
-        public int FkPirkimasuzsakymoNumeris { get; set; }
-        public int FkNuomanuomosNumeris { get; set; }
-        public int FkSandelysidSandelys { get; set; }
+        public int? FkPirkimasuzsakymoNumeris { get; set; }
+        public int? FkNuomanuomosNumeris { get; set; }
+        public int? FkSandelysidSandelys { get; set; }
 
         public Nuoma FkNuomanuomosNumerisNavigation { get; set; }
         public Pirkimas FkPirkimasuzsakymoNumerisNavigation { get; set; }
