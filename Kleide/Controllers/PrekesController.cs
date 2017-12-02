@@ -20,15 +20,29 @@ namespace Kleide.Controllers
             _context = context;
         }
 
-        // GET: Prekes
+        // GET: Prekes admin
+        public async Task<IActionResult> PrekiuKiekis()
+        {
+            //var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
+            return View("PrekiuKiekis", _context.Preke.Count());
+        }
+
+        // GET: Prekes admin
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
             return View(await kleideContext.ToListAsync());
         }
 
+        // GET: Prekes
+        public async Task<IActionResult> Cards()
+        {
+            var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
+            return View(await kleideContext.ToListAsync());
+        }
+
         // GET: Prekes/Details/5
-    
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
