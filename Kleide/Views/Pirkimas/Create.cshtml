@@ -1,10 +1,9 @@
 ﻿@model Kleide.Models.Pirkimas
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Sukurti Pirkima";
 }
 
-<h2>Create</h2>
 
 <h4>Pirkimas</h4>
 <hr />
@@ -18,19 +17,9 @@
                 <span asp-validation-for="UzsakymoNumeris" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
-                <span asp-validation-for="Data" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Kaina" class="control-label"></label>
                 <input asp-for="Kaina" class="form-control" />
                 <span asp-validation-for="Kaina" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pvm" class="control-label"></label>
-                <input asp-for="Pvm" class="form-control" />
-                <span asp-validation-for="Pvm" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Kuponas" class="control-label"></label>
@@ -42,18 +31,19 @@
                 <input asp-for="ArApdrausta" class="form-control" />
                 <span asp-validation-for="ArApdrausta" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="FkMokejimasmokejimoId" class="control-label"></label>
-                <select asp-for="FkMokejimasmokejimoId" class ="form-control" asp-items="ViewBag.FkMokejimasmokejimoId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FkAsmuoasmensKodas" class="control-label"></label>
-                <select asp-for="FkAsmuoasmensKodas" class ="form-control" asp-items="ViewBag.FkAsmuoasmensKodas"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FkAsmuoasmensKodas1" class="control-label"></label>
-                <select asp-for="FkAsmuoasmensKodas1" class ="form-control" asp-items="ViewBag.FkAsmuoasmensKodas1"></select>
-            </div>
+
+            @*<div class="form-group">
+                    <label asp-for="FkMokejimasmokejimoId" class="control-label"></label>
+                    <select asp-for="FkMokejimasmokejimoId" class="form-control" asp-items="ViewBag.FkMokejimasmokejimoId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FkAsmuoasmensKodas" class="control-label"></label>
+                    <select asp-for="FkAsmuoasmensKodas" class="form-control" asp-items="ViewBag.FkAsmuoasmensKodas"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FkAsmuoasmensKodas1" class="control-label"></label>
+                    <select asp-for="FkAsmuoasmensKodas1" class="form-control" asp-items="ViewBag.FkAsmuoasmensKodas1"></select>
+                </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

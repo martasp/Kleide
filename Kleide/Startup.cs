@@ -31,7 +31,8 @@ namespace Kleide
 
 
             //perkelti conection stringa jei leidziama i productiona !!!!
-            var connection = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=Kleide;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+            //var connection = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=Kleide;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+            var connection = "Data Source=SQL6002.site4now.net;Initial Catalog=DB_A2F346_kleide;User Id=DB_A2F346_kleide_admin;Password=Kleide3289;";
             services.AddDbContext<KleideContext>(options => options.UseSqlServer(connection));
 
 
