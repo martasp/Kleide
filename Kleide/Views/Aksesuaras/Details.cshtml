@@ -1,0 +1,54 @@
+﻿@model Kleide.Models.Aksesuaras
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Aksesuaras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaloTipas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MetaloTipas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArSuGrandinele)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArSuGrandinele)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArElektroninis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArElektroninis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lytis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lytis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation.IdAksesuaruKategorija)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAksesuaras">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

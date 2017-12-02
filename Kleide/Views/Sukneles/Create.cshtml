@@ -1,0 +1,52 @@
+﻿@model Kleide.Models.Suknele
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Suknele</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SuknelesNumeris" class="control-label"></label>
+                <input asp-for="SuknelesNumeris" class="form-control" />
+                <span asp-validation-for="SuknelesNumeris" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ilgis" class="control-label"></label>
+                <input asp-for="Ilgis" class="form-control" />
+                <span asp-validation-for="Ilgis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Audinys" class="control-label"></label>
+                <input asp-for="Audinys" class="form-control" />
+                <span asp-validation-for="Audinys" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModelioTipas" class="control-label"></label>
+                <input asp-for="ModelioTipas" class="form-control" />
+                <span asp-validation-for="ModelioTipas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkPrekeidPreke" class="control-label">Priklauso prekei: </label>
+                <select asp-for="FkPrekeidPreke" class ="form-control" asp-items="ViewBag.FkPrekeidPreke"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

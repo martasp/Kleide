@@ -1,0 +1,49 @@
+﻿@model Kleide.Models.Suknele
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Suknele</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SuknelesNumeris" />
+            <div class="form-group">
+                <label asp-for="Ilgis" class="control-label"></label>
+                <input asp-for="Ilgis" class="form-control" />
+                <span asp-validation-for="Ilgis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Audinys" class="control-label"></label>
+                <input asp-for="Audinys" class="form-control" />
+                <span asp-validation-for="Audinys" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModelioTipas" class="control-label"></label>
+                <input asp-for="ModelioTipas" class="form-control" />
+                <span asp-validation-for="ModelioTipas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkPrekeidPreke" class="control-label"></label>
+                <select asp-for="FkPrekeidPreke" class="form-control" asp-items="ViewBag.FkPrekeidPreke"></select>
+                <span asp-validation-for="FkPrekeidPreke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

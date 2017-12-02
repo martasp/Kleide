@@ -63,13 +63,51 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
+        public async Task<IActionResult> Create1([Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "sukneles");
+            }
+            ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
+            ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);
+            ViewData["FkSandelysidSandelys"] = new SelectList(_context.Sandelys, "IdSandelys", "IdSandelys", preke.FkSandelysidSandelys);
+            return View(preke);
+        }
+
+        // POST: Prekes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create2([Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(preke);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Create", "avalynes");
+            }
+            ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
+            ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);
+            ViewData["FkSandelysidSandelys"] = new SelectList(_context.Sandelys, "IdSandelys", "IdSandelys", preke.FkSandelysidSandelys);
+            return View(preke);
+        }
+
+        // POST: Prekes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create3([Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(preke);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Create", "aksesuaras");
             }
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);
@@ -160,7 +198,23 @@ namespace Kleide.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var suknele = await _context.Suknele.SingleOrDefaultAsync(m => m.FkPrekeidPreke == id);
+            var avalyne = await _context.Avalyne.SingleOrDefaultAsync(m => m.FkPrekeidPreke == id);
+            var aksesuaras = await _context.Aksesuaras.SingleOrDefaultAsync(m => m.FkPrekeidPreke == id);
             var preke = await _context.Preke.SingleOrDefaultAsync(m => m.IdPreke == id);
+            if (suknele != null)
+            {
+                _context.Suknele.Remove(suknele);
+            }
+            else if (avalyne != null)
+            {
+                _context.Avalyne.Remove(avalyne);
+            }
+            else if (aksesuaras != null)
+            {
+                _context.Aksesuaras.Remove(aksesuaras);
+            }
+            
             _context.Preke.Remove(preke);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

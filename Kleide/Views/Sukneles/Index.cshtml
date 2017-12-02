@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Kleide.Models.Suknele>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ilgis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Audinys)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModelioTipas)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ilgis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Audinys)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelioTipas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.IdPreke)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SuknelesNumeris">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SuknelesNumeris">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SuknelesNumeris">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
