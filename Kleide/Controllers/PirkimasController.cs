@@ -6,16 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Kleide.Controllers
 {
     public class PirkimasController : Controller
     {
         private readonly KleideContext _context;
-
-        public PirkimasController(KleideContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public PirkimasController(KleideContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Pirkimas
@@ -47,26 +49,45 @@ namespace Kleide.Controllers
         }
 
         // GET: Pirkimas/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            ViewData["UzsakymoNumeris"] = id;
             ViewData["FkAsmuoasmensKodas1"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas");
             ViewData["FkAsmuoasmensKodas"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas");
             ViewData["FkMokejimasmokejimoId"] = new SelectList(_context.Mokejimas, "MokejimoId", "MokejimoId");
             return View();
         }
-
-        // POST: Pirkimas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UzsakymoNumeris,Data,Kaina,Pvm,Kuponas,ArApdrausta,FkMokejimasmokejimoId,FkAsmuoasmensKodas,FkAsmuoasmensKodas1")] Pirkimas pirkimas)
         {
             if (ModelState.IsValid)
             {
+                var user = await GetCurrentUserAsync();
+                var userId = user?.Id;
+                pirkimas.Data = DateTime.Now;
+                pirkimas.Pvm = 21;
+                pirkimas.Kaina = _context.Preke.SingleOrDefault(preke => preke.IdPreke == pirkimas.UzsakymoNumeris).Kaina;
+                pirkimas.FkAsmuoasmensKodas = _context.Asmuo.SingleOrDefault(asmuo => asmuo.AsmesnsId == userId).AsmensKodas;
+
+                Mokejimas mokejimas = new Mokejimas
+                {
+                    AtsiskaitymoBūdas = "-",
+                    AtsiėmimoVieta = "Kaunas Studentu Gatve 71",
+                    Data = DateTime.Now,
+                    DraudimoTipas = "Kasko",
+                    MokejimoBusena = "neatliktas",
+                    MokejimoId = pirkimas.UzsakymoNumeris,
+                    NuolaidosSuma = 20,
+                    SumoketaSuma = 0,
+                };
+
+
+                _context.Mokejimas.Add(mokejimas);
                 _context.Add(pirkimas);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View(nameof(Details), mokejimas);
             }
             ViewData["FkAsmuoasmensKodas1"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas", pirkimas.FkAsmuoasmensKodas1);
             ViewData["FkAsmuoasmensKodas"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas", pirkimas.FkAsmuoasmensKodas);

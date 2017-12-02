@@ -13,6 +13,7 @@ namespace Kleide.Models
         public DateTime? PridejimoData { get; set; }
         public int? NuomosSkaicius { get; set; }
         public string Bukle { get; set; }
+        public int Kaina { get; set; }
         public string PagaminimoSalis { get; set; }
         public bool? ArRankuDarbo { get; set; }
         public string RezervavimoTipas { get; set; }

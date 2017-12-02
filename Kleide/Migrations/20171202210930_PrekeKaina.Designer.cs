@@ -11,9 +11,10 @@ using System;
 namespace Kleide.Migrations
 {
     [DbContext(typeof(KleideContext))]
-    partial class KleideContextModelSnapshot : ModelSnapshot
+    [Migration("20171202210930_PrekeKaina")]
+    partial class PrekeKaina
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,7 +261,7 @@ namespace Kleide.Migrations
                         .HasMaxLength(255)
                         .IsUnicode(false);
 
-                    b.Property<string>("AtsiėmimoVieta")
+                    b.Property<double?>("AtsiėmimoVieta")
                         .HasColumnName("atsiėmimo_vieta");
 
                     b.Property<DateTime?>("Data")
