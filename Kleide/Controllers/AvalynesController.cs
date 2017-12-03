@@ -81,7 +81,7 @@ namespace Kleide.Controllers
             {
                 return NotFound();
             }
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", avalyne.FkPrekeidPreke);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "Pavadinimas", avalyne.FkPrekeidPreke);
             return View(avalyne);
         }
 
@@ -117,7 +117,7 @@ namespace Kleide.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", avalyne.FkPrekeidPreke);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "Pavadinimas", avalyne.FkPrekeidPreke);
             return View(avalyne);
         }
 

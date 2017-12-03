@@ -4,8 +4,6 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
-
 <h4>Preke</h4>
 <hr />
 <div class="row">
@@ -28,6 +26,11 @@
                 <span asp-validation-for="Spalva" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Kaina" class="control-label"></label>
+                <input asp-for="Kaina" class="form-control" />
+                <span asp-validation-for="Kaina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Aprasymas" class="control-label"></label>
                 <input asp-for="Aprasymas" class="form-control" />
                 <span asp-validation-for="Aprasymas" class="text-danger"></span>
@@ -38,12 +41,12 @@
                 <span asp-validation-for="Nuotrauka" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PridejimoData" class="control-label"></label>
+                <label asp-for="PridejimoData" class="control-label">Pridejimo data</label>
                 <input asp-for="PridejimoData" class="form-control" />
                 <span asp-validation-for="PridejimoData" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NuomosSkaicius" class="control-label"></label>
+                <label asp-for="NuomosSkaicius" class="control-label">Nuomos skaicius</label>
                 <input asp-for="NuomosSkaicius" class="form-control" />
                 <span asp-validation-for="NuomosSkaicius" class="text-danger"></span>
             </div>
@@ -53,33 +56,33 @@
                 <span asp-validation-for="Bukle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PagaminimoSalis" class="control-label"></label>
+                <label asp-for="PagaminimoSalis" class="control-label">Pagaminimo salis</label>
                 <input asp-for="PagaminimoSalis" class="form-control" />
                 <span asp-validation-for="PagaminimoSalis" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArRankuDarbo" class="control-label"></label>
+                <label asp-for="ArRankuDarbo" class="control-label">Ranku darbo</label>
                 <input asp-for="ArRankuDarbo" class="form-control" />
                 <span asp-validation-for="ArRankuDarbo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RezervavimoTipas" class="control-label"></label>
+                <label asp-for="RezervavimoTipas" class="control-label">Rezervavimo tipas</label>
                 <input asp-for="RezervavimoTipas" class="form-control" />
                 <span asp-validation-for="RezervavimoTipas" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="IdPreke" />
             <div class="form-group">
-                <label asp-for="FkPirkimasuzsakymoNumeris" class="control-label"></label>
+                <label asp-for="FkPirkimasuzsakymoNumeris" class="control-label">Pirkimo numeris</label>
                 <select asp-for="FkPirkimasuzsakymoNumeris" class="form-control" asp-items="ViewBag.FkPirkimasuzsakymoNumeris"></select>
                 <span asp-validation-for="FkPirkimasuzsakymoNumeris" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FkNuomanuomosNumeris" class="control-label"></label>
+                <label asp-for="FkNuomanuomosNumeris" class="control-label">Nuomos numeris</label>
                 <select asp-for="FkNuomanuomosNumeris" class="form-control" asp-items="ViewBag.FkNuomanuomosNumeris"></select>
                 <span asp-validation-for="FkNuomanuomosNumeris" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FkSandelysidSandelys" class="control-label"></label>
+                <label asp-for="FkSandelysidSandelys" class="control-label">Sandelys</label>
                 <select asp-for="FkSandelysidSandelys" class="form-control" asp-items="ViewBag.FkSandelysidSandelys"></select>
                 <span asp-validation-for="FkSandelysidSandelys" class="text-danger"></span>
             </div>

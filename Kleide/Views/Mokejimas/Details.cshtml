@@ -1,0 +1,60 @@
+﻿@model Kleide.Models.Mokejimas
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h4>Mokejimo informacija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SumoketaSuma)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SumoketaSuma)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AtsiskaitymoBūdas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AtsiskaitymoBūdas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DraudimoTipas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DraudimoTipas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NuolaidosSuma)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NuolaidosSuma)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AtsiėmimoVieta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AtsiėmimoVieta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MokejimoBusena)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MokejimoBusena)
+        </dd>
+    </dl>
+</div>
+<div>
+    <h2>Pavedima atlikite LT121000011101001000 </h2>
+    <a asp-action="Edit" asp-route-id="@Model.MokejimoId">Keisti</a> |
+    <a asp-action="Index">Mokėjimai</a>
+</div>

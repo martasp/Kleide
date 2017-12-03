@@ -13,17 +13,17 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MetaloTipas" class="control-label"></label>
+                <label asp-for="MetaloTipas" class="control-label">Metalo tipas</label>
                 <input asp-for="MetaloTipas" class="form-control" />
                 <span asp-validation-for="MetaloTipas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArSuGrandinele" class="control-label"></label>
+                <label asp-for="ArSuGrandinele" class="control-label">Su grandinele</label>
                 <input asp-for="ArSuGrandinele" class="form-control" />
                 <span asp-validation-for="ArSuGrandinele" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArElektroninis" class="control-label"></label>
+                <label asp-for="ArElektroninis" class="control-label">Elektroninis</label>
                 <input asp-for="ArElektroninis" class="form-control" />
                 <span asp-validation-for="ArElektroninis" class="text-danger"></span>
             </div>
@@ -38,7 +38,7 @@
                 <span asp-validation-for="IdAksesuaras" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FkAksesuaruKategorijaidAksesuaruKategorija" class="control-label"></label>
+                <label asp-for="FkAksesuaruKategorijaidAksesuaruKategorija" class="control-label">Aksesuaro kategorija</label>
                 <select asp-for="FkAksesuaruKategorijaidAksesuaruKategorija" class ="form-control" asp-items="ViewBag.FkAksesuaruKategorijaidAksesuaruKategorija"></select>
             </div>
             <div class="form-group">

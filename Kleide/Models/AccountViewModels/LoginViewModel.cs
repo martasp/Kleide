@@ -10,13 +10,15 @@ namespace Kleide.Models.AccountViewModels
     {
         [Required]
         [EmailAddress]
+        [Display(Name = "Prisijungimo vardas?")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [Display(Name = "Slaptažodis?")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Įsiminti?")]
         public bool RememberMe { get; set; }
     }
 }

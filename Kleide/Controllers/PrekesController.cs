@@ -20,15 +20,29 @@ namespace Kleide.Controllers
             _context = context;
         }
 
-        // GET: Prekes
+        // GET: Prekes admin
+        public async Task<IActionResult> PrekiuKiekis()
+        {
+            //var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
+            return View("PrekiuKiekis", _context.Preke.Count());
+        }
+
+        // GET: Prekes admin
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
             return View(await kleideContext.ToListAsync());
         }
 
+        // GET: Prekes
+        public async Task<IActionResult> Cards()
+        {
+            var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
+            return View(await kleideContext.ToListAsync());
+        }
+
         // GET: Prekes/Details/5
-    
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,6 +66,7 @@ namespace Kleide.Controllers
         // GET: Prekes/Create
         public IActionResult Create()
         {
+            ViewData["Nuotraukos"] = new SelectList(new List<String>() { "/Aksesuaras.jpg", "/DeloreSuknele.jpg", "/JuodaSuknele.jpg" });
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris");
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris");
             ViewData["FkSandelysidSandelys"] = new SelectList(_context.Sandelys, "IdSandelys", "IdSandelys");
@@ -63,10 +78,12 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create1([Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
+        public async Task<IActionResult> Create1([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
+            var id = _context.Preke.LastOrDefault().IdPreke + 1;
             if (ModelState.IsValid)
             {
+                preke.IdPreke = id;
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Create", "sukneles", new { id = preke.IdPreke});
@@ -139,8 +156,9 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
+        public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
+
             if (id != preke.IdPreke)
             {
                 return NotFound();

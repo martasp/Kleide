@@ -48,7 +48,7 @@ namespace Kleide.Controllers
         // GET: Aksesuaras/Create
         public IActionResult Create(int id)
         {
-            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "IdAksesuaruKategorija");
+            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "Pavadinimas");
             ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke.Where(p => p.IdPreke == id), "IdPreke", "Pavadinimas");
             return View();
         }
@@ -66,8 +66,8 @@ namespace Kleide.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "IdAksesuaruKategorija", aksesuaras.FkAksesuaruKategorijaidAksesuaruKategorija);
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", aksesuaras.FkPrekeidPreke);
+            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "Pavadinimas", aksesuaras.FkAksesuaruKategorijaidAksesuaruKategorija);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "Pavadinimas", aksesuaras.FkPrekeidPreke);
             return View(aksesuaras);
         }
 
@@ -84,8 +84,8 @@ namespace Kleide.Controllers
             {
                 return NotFound();
             }
-            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "IdAksesuaruKategorija", aksesuaras.FkAksesuaruKategorijaidAksesuaruKategorija);
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", aksesuaras.FkPrekeidPreke);
+            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "Pavadinimas", aksesuaras.FkAksesuaruKategorijaidAksesuaruKategorija);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "Pavadinimas", aksesuaras.FkPrekeidPreke);
             return View(aksesuaras);
         }
 
@@ -121,8 +121,8 @@ namespace Kleide.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "IdAksesuaruKategorija", aksesuaras.FkAksesuaruKategorijaidAksesuaruKategorija);
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", aksesuaras.FkPrekeidPreke);
+            ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "Pavadinimas", aksesuaras.FkAksesuaruKategorijaidAksesuaruKategorija);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "Pavadinimas", aksesuaras.FkPrekeidPreke);
             return View(aksesuaras);
         }
 
