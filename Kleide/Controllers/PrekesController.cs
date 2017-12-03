@@ -28,6 +28,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes admin
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
@@ -35,6 +36,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes
+        [Authorize]
         public async Task<IActionResult> Cards()
         {
             var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
@@ -42,7 +44,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Details/5
-
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -64,6 +66,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["Nuotraukos"] = new SelectList(new List<String>() { "/Aksesuaras.jpg", "/DeloreSuknele.jpg", "/JuodaSuknele.jpg" });
@@ -77,6 +80,7 @@ namespace Kleide.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
             var id = _context.Preke.LastOrDefault().IdPreke + 1;
@@ -94,6 +98,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,6 +122,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
 
@@ -152,6 +158,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -175,6 +182,7 @@ namespace Kleide.Controllers
         // POST: Prekes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var preke = await _context.Preke.SingleOrDefaultAsync(m => m.IdPreke == id);
