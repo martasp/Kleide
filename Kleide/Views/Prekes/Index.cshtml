@@ -4,8 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Prekes</h2>
+<p>
+    @Html.ActionLink("Sukneles", "Index", "sukneles")
+    @Html.ActionLink("Avalyne", "Index", "avalynes")
+    @Html.ActionLink("Aksesuarai", "Index", "aksesuaras")
+</p>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -28,22 +32,22 @@
                 @Html.DisplayNameFor(model => model.Nuotrauka)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PridejimoData)
+                Pridejimo data
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NuomosSkaicius)
+                Nuomos skaicius
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Bukle)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PagaminimoSalis)
+                Pagaminimo salis
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArRankuDarbo)
+                Ar ranku darbo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RezervavimoTipas)
+                Rezervavimo tipas
             </th>
 
             <th></th>
@@ -81,7 +85,7 @@
                     @Html.DisplayFor(modelItem => item.PagaminimoSalis)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ArRankuDarbo)
+                    @Html.DisplayFor(modelItem => item.ArRankuDarbo) 
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.RezervavimoTipas)

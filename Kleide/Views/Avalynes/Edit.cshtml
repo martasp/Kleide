@@ -1,0 +1,59 @@
+﻿@model Kleide.Models.Avalyne
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Avalyne</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MedziagosTipas" class="control-label"></label>
+                <input asp-for="MedziagosTipas" class="form-control" />
+                <span asp-validation-for="MedziagosTipas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uzsegimas" class="control-label"></label>
+                <input asp-for="Uzsegimas" class="form-control" />
+                <span asp-validation-for="Uzsegimas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pobudis" class="control-label"></label>
+                <input asp-for="Pobudis" class="form-control" />
+                <span asp-validation-for="Pobudis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuKulniuku" class="control-label"></label>
+                <input asp-for="SuKulniuku" class="form-control" />
+                <span asp-validation-for="SuKulniuku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lytis" class="control-label"></label>
+                <input asp-for="Lytis" class="form-control" />
+                <span asp-validation-for="Lytis" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="IdAvalyne" />
+            <div class="form-group">
+                <label asp-for="FkPrekeidPreke" class="control-label"></label>
+                <select asp-for="FkPrekeidPreke" class="form-control" asp-items="ViewBag.FkPrekeidPreke"></select>
+                <span asp-validation-for="FkPrekeidPreke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

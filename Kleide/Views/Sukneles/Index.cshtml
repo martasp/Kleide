@@ -4,25 +4,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Sukneles</h2>
+<p>
+    @Html.ActionLink("Prekes", "Index", "prekes")
+    @Html.ActionLink("Avalyne", "Index", "avalynes")
+    @Html.ActionLink("Aksesuarai", "Index", "aksesuaras")
+</p>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ilgis)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Audinys)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ModelioTipas)
-                </th>
             <th>
-                @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+                @Html.DisplayNameFor(model => model.Ilgis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Audinys)
+            </th>
+            <th>
+                Modelio tipas
+            </th>
+            <th>
+                Sukneles preke
             </th>
             <th></th>
         </tr>
@@ -40,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.ModelioTipas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.IdPreke)
+                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.Pavadinimas)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SuknelesNumeris">Edit</a> |

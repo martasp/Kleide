@@ -69,7 +69,7 @@ namespace Kleide.Controllers
             {
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "sukneles");
+                return RedirectToAction("Create", "sukneles", new { id = preke.IdPreke});
             }
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);
@@ -88,7 +88,7 @@ namespace Kleide.Controllers
             {
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "avalynes");
+                return RedirectToAction("Create", "avalynes", new { id = preke.IdPreke });
             }
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);
@@ -107,7 +107,7 @@ namespace Kleide.Controllers
             {
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "aksesuaras");
+                return RedirectToAction("Create", "aksesuaras", new { id = preke.IdPreke });
             }
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);

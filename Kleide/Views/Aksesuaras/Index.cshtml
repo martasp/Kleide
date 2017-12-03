@@ -4,31 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Aksesuarai</h2>
+<p>
+    @Html.ActionLink("Prekes", "Index", "prekes")
+    @Html.ActionLink("Sukneles", "Index", "sukneles")
+    @Html.ActionLink("Avalyne", "Index", "avalynes")
+</p>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.MetaloTipas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ArSuGrandinele)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ArElektroninis)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Lytis)
-                </th>
             <th>
-                @Html.DisplayNameFor(model => model.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation)
+                Metalo tipas
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+                Su grandinele
+            </th>
+            <th>
+                Elektroninis
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lytis)
+            </th>
+            <th>
+                Aksesuaro kategorija
+            </th>
+            <th>
+                Aksesuaro preke
             </th>
             <th></th>
         </tr>
@@ -49,10 +53,10 @@
                 @Html.DisplayFor(modelItem => item.Lytis)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation.IdAksesuaruKategorija)
+                @Html.DisplayFor(modelItem => item.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation.Pavadinimas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.IdPreke)
+                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.Pavadinimas)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdAksesuaras">Edit</a> |

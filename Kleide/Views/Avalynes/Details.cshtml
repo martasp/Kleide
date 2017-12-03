@@ -1,0 +1,54 @@
+﻿@model Kleide.Models.Avalyne
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Avalyne</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MedziagosTipas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MedziagosTipas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Uzsegimas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uzsegimas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pobudis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pobudis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SuKulniuku)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SuKulniuku)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lytis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lytis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAvalyne">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

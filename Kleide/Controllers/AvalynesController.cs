@@ -9,23 +9,23 @@ using Kleide.Models;
 
 namespace Kleide.Controllers
 {
-    public class SuknelesController : Controller
+    public class AvalynesController : Controller
     {
         private readonly KleideContext _context;
 
-        public SuknelesController(KleideContext context)
+        public AvalynesController(KleideContext context)
         {
             _context = context;
         }
 
-        // GET: Sukneles
+        // GET: Avalynes
         public async Task<IActionResult> Index()
         {
-            var kleideContext = _context.Suknele.Include(s => s.FkPrekeidPrekeNavigation);
+            var kleideContext = _context.Avalyne.Include(a => a.FkPrekeidPrekeNavigation);
             return View(await kleideContext.ToListAsync());
         }
 
-        // GET: Sukneles/Details/5
+        // GET: Avalynes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,46 +33,42 @@ namespace Kleide.Controllers
                 return NotFound();
             }
 
-            var suknele = await _context.Suknele
-                .Include(s => s.FkPrekeidPrekeNavigation)
-                .SingleOrDefaultAsync(m => m.SuknelesNumeris == id);
-            if (suknele == null)
+            var avalyne = await _context.Avalyne
+                .Include(a => a.FkPrekeidPrekeNavigation)
+                .SingleOrDefaultAsync(m => m.IdAvalyne == id);
+            if (avalyne == null)
             {
                 return NotFound();
             }
 
-            return View(suknele);
+            return View(avalyne);
         }
 
-        // GET: Sukneles/Create
+        // GET: Avalynes/Create
         public IActionResult Create(int id)
         {
             ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke.Where(p => p.IdPreke == id), "IdPreke", "Pavadinimas");
             return View();
         }
 
-        // POST: Sukneles/Create
+        // POST: Avalynes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SuknelesNumeris,Ilgis,Audinys,ModelioTipas,FkPrekeidPreke")] Suknele suknele)
+        public async Task<IActionResult> Create([Bind("MedziagosTipas,Uzsegimas,Pobudis,SuKulniuku,Lytis,IdAvalyne,FkPrekeidPreke")] Avalyne avalyne)
         {
             if (ModelState.IsValid)
             {
-
-                //var suknele = new Suknele { Audinys = prekesuknele.Audinys };
-                //var pake = new Preke { Aksesuaras  = prekesuknele };
-                _context.Suknele.Add(suknele);
-                //_context.Preke.Add(pake);
+                _context.Add(avalyne);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", suknele.FkPrekeidPreke);
-            return View(suknele);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", avalyne.FkPrekeidPreke);
+            return View(avalyne);
         }
 
-        // GET: Sukneles/Edit/5
+        // GET: Avalynes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,23 +76,23 @@ namespace Kleide.Controllers
                 return NotFound();
             }
 
-            var suknele = await _context.Suknele.SingleOrDefaultAsync(m => m.SuknelesNumeris == id);
-            if (suknele == null)
+            var avalyne = await _context.Avalyne.SingleOrDefaultAsync(m => m.IdAvalyne == id);
+            if (avalyne == null)
             {
                 return NotFound();
             }
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", suknele.FkPrekeidPreke);
-            return View(suknele);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", avalyne.FkPrekeidPreke);
+            return View(avalyne);
         }
 
-        // POST: Sukneles/Edit/5
+        // POST: Avalynes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SuknelesNumeris,Ilgis,Audinys,ModelioTipas,FkPrekeidPreke")] Suknele suknele)
+        public async Task<IActionResult> Edit(int id, [Bind("MedziagosTipas,Uzsegimas,Pobudis,SuKulniuku,Lytis,IdAvalyne,FkPrekeidPreke")] Avalyne avalyne)
         {
-            if (id != suknele.SuknelesNumeris)
+            if (id != avalyne.IdAvalyne)
             {
                 return NotFound();
             }
@@ -105,12 +101,12 @@ namespace Kleide.Controllers
             {
                 try
                 {
-                    _context.Update(suknele);
+                    _context.Update(avalyne);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SukneleExists(suknele.SuknelesNumeris))
+                    if (!AvalyneExists(avalyne.IdAvalyne))
                     {
                         return NotFound();
                     }
@@ -121,11 +117,11 @@ namespace Kleide.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", suknele.FkPrekeidPreke);
-            return View(suknele);
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke", avalyne.FkPrekeidPreke);
+            return View(avalyne);
         }
 
-        // GET: Sukneles/Delete/5
+        // GET: Avalynes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,31 +129,31 @@ namespace Kleide.Controllers
                 return NotFound();
             }
 
-            var suknele = await _context.Suknele
-                .Include(s => s.FkPrekeidPrekeNavigation)
-                .SingleOrDefaultAsync(m => m.SuknelesNumeris == id);
-            if (suknele == null)
+            var avalyne = await _context.Avalyne
+                .Include(a => a.FkPrekeidPrekeNavigation)
+                .SingleOrDefaultAsync(m => m.IdAvalyne == id);
+            if (avalyne == null)
             {
                 return NotFound();
             }
 
-            return View(suknele);
+            return View(avalyne);
         }
 
-        // POST: Sukneles/Delete/5
+        // POST: Avalynes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var suknele = await _context.Suknele.SingleOrDefaultAsync(m => m.SuknelesNumeris == id);
-            _context.Suknele.Remove(suknele);
+            var avalyne = await _context.Avalyne.SingleOrDefaultAsync(m => m.IdAvalyne == id);
+            _context.Avalyne.Remove(avalyne);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SukneleExists(int id)
+        private bool AvalyneExists(int id)
         {
-            return _context.Suknele.Any(e => e.SuknelesNumeris == id);
+            return _context.Avalyne.Any(e => e.IdAvalyne == id);
         }
     }
 }

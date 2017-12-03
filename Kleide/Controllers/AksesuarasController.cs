@@ -46,10 +46,10 @@ namespace Kleide.Controllers
         }
 
         // GET: Aksesuaras/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
             ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "IdAksesuaruKategorija");
-            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke, "IdPreke", "IdPreke");
+            ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke.Where(p => p.IdPreke == id), "IdPreke", "Pavadinimas");
             return View();
         }
 
