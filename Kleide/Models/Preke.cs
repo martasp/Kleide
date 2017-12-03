@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kleide.Models
 {
@@ -10,12 +12,16 @@ namespace Kleide.Models
         public string Spalva { get; set; }
         public string Aprasymas { get; set; }
         public string Nuotrauka { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? PridejimoData { get; set; }
         public int? NuomosSkaicius { get; set; }
         public string Bukle { get; set; }
+        public int Kaina { get; set; }
         public string PagaminimoSalis { get; set; }
         public bool? ArRankuDarbo { get; set; }
         public string RezervavimoTipas { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdPreke { get; set; }
         public int? FkPirkimasuzsakymoNumeris { get; set; }
         public int? FkNuomanuomosNumeris { get; set; }

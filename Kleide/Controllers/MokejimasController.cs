@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -19,12 +20,12 @@ namespace Kleide.Controllers
         }
 
         // GET: Mokejimas
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Mokejimas.ToListAsync());
-        }
+
+        [Authorize]
+        public async Task<IActionResult> Index() => View(await _context.Mokejimas.ToListAsync());
 
         // GET: Mokejimas/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,29 +43,30 @@ namespace Kleide.Controllers
             return View(mokejimas);
         }
 
-        // GET: Mokejimas/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Mokejimas/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: Mokejimas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MokejimoId,Data,SumoketaSuma,AtsiskaitymoBūdas,DraudimoTipas,NuolaidosSuma,AtsiėmimoVieta,MokejimoBusena")] Mokejimas mokejimas)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(mokejimas);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(mokejimas);
-        }
+        //// POST: Mokejimas/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("MokejimoId,Data,SumoketaSuma,AtsiskaitymoBūdas,DraudimoTipas,NuolaidosSuma,AtsiėmimoVieta,MokejimoBusena")] Mokejimas mokejimas)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(mokejimas);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(mokejimas);
+        //}
 
         // GET: Mokejimas/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,11 +82,9 @@ namespace Kleide.Controllers
             return View(mokejimas);
         }
 
-        // POST: Mokejimas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("MokejimoId,Data,SumoketaSuma,AtsiskaitymoBūdas,DraudimoTipas,NuolaidosSuma,AtsiėmimoVieta,MokejimoBusena")] Mokejimas mokejimas)
         {
             if (id != mokejimas.MokejimoId)
@@ -116,6 +116,8 @@ namespace Kleide.Controllers
         }
 
         // GET: Mokejimas/Delete/5
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +138,7 @@ namespace Kleide.Controllers
         // POST: Mokejimas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var mokejimas = await _context.Mokejimas.SingleOrDefaultAsync(m => m.MokejimoId == id);

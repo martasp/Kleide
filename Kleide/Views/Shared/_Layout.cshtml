@@ -15,6 +15,9 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+
+
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,8 +34,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Prekes" asp-action="index">Prekes</a></li>
+                    <li><a asp-area="" asp-controller="Prekes" asp-action="index">PrekesAdmin</a></li>
+                    <li><a asp-area="" asp-controller="Prekes/cards" asp-action="index">Prekes</a></li>
                     <li><a asp-area="" asp-controller="Asmuos" asp-action="Myinfo">Mano informacija</a></li>
+                    <li><a asp-area="" asp-controller="pirkimas" asp-action="index">Mano Pirkimai</a></li>
+                    <li><a asp-area="" asp-controller="mokejimas" asp-action="index">Mano Mokėjimai</a></li>
+                    <li><a asp-area="" asp-controller="nuomas" asp-action="index">Mano Nuomos</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
