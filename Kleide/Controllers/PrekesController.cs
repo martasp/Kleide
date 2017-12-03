@@ -66,6 +66,7 @@ namespace Kleide.Controllers
         // GET: Prekes/Create
         public IActionResult Create()
         {
+            ViewData["Nuotraukos"] = new SelectList(new List<String>() { "/Aksesuaras.jpg", "/DeloreSuknele.jpg", "/JuodaSuknele.jpg" });
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris");
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris");
             ViewData["FkSandelysidSandelys"] = new SelectList(_context.Sandelys, "IdSandelys", "IdSandelys");
@@ -116,7 +117,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
+        public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
 
             if (id != preke.IdPreke)

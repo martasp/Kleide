@@ -80,15 +80,15 @@
                     @Html.DisplayFor(modelItem => item.PagaminimoSalis)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ArRankuDarbo)
-                    @*@if (@item.ArRankuDarbo.GetValueOrDefault().ToString() == "true")
-                        {
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                        }
-                        else
-                        {
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        }*@
+                    @* @Html.DisplayFor(modelItem => item.ArRankuDarbo)*@
+                    @if (@item.ArRankuDarbo.Value)
+                    {
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.RezervavimoTipas)
