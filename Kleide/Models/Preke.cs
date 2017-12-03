@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kleide.Models
 {
@@ -17,6 +18,7 @@ namespace Kleide.Models
         public string PagaminimoSalis { get; set; }
         public bool? ArRankuDarbo { get; set; }
         public string RezervavimoTipas { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdPreke { get; set; }
         public int? FkPirkimasuzsakymoNumeris { get; set; }
         public int? FkNuomanuomosNumeris { get; set; }
