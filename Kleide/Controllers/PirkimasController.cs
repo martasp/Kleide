@@ -85,7 +85,7 @@ namespace Kleide.Controllers
                     DraudimoTipas = "-",
                     MokejimoBusena = "neatliktas",
                     MokejimoId = pirkimas.UzsakymoNumeris,
-                    NuolaidosSuma = 20,
+                    NuolaidosSuma = pirkimas.Kuponas == 3289 ? pirkimas.Kaina * 0.2 : 0,
                     SumoketaSuma = 0,
                 };
 

@@ -38,7 +38,8 @@ namespace Kleide.Controllers
             {
                 return NotFound();
             }
-
+            var kaina = _context.Preke.SingleOrDefault(preke => preke.IdPreke == mokejimas.MokejimoId).Kaina;
+            ViewData["msg"] = $"Jums reikia sumokėti {kaina - mokejimas.NuolaidosSuma}. Pritaikayta nuolda už kupona vertė {mokejimas.NuolaidosSuma}";
             return View(mokejimas);
         }
 

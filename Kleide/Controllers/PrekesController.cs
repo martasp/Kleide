@@ -83,13 +83,22 @@ namespace Kleide.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create1([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
-            var id = _context.Preke.LastOrDefault().IdPreke + 1;
+            var id = 0;
+            if (_context.Preke.Count() == 0)
+            {
+                id = 0;
+                preke.IdPreke = 0;
+            }
+            else
+            {
+                id = _context.Preke.LastOrDefault().IdPreke + 1;
+            }
             if (ModelState.IsValid)
             {
                 preke.IdPreke = id;
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "sukneles", new { id = preke.IdPreke});
+                return RedirectToAction("Create", "sukneles", new { id = preke.IdPreke });
             }
             ViewData["FkNuomanuomosNumeris"] = new SelectList(_context.Nuoma, "NuomosNumeris", "NuomosNumeris", preke.FkNuomanuomosNumeris);
             ViewData["FkPirkimasuzsakymoNumeris"] = new SelectList(_context.Pirkimas, "UzsakymoNumeris", "UzsakymoNumeris", preke.FkPirkimasuzsakymoNumeris);
@@ -105,8 +114,19 @@ namespace Kleide.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create2([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
+            var id = 0;
+            if (_context.Preke.Count() == 0)
+            {
+                id = 0;
+                preke.IdPreke = 0;
+            }
+            else
+            {
+                id = _context.Preke.LastOrDefault().IdPreke + 1;
+            }
             if (ModelState.IsValid)
             {
+                preke.IdPreke = id;
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Create", "avalynes", new { id = preke.IdPreke });
@@ -125,8 +145,19 @@ namespace Kleide.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create3([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
+            var id = 0;
+            if (_context.Preke.Count() == 0)
+            {
+                id = 0;
+                preke.IdPreke = 0;
+            }
+            else
+            {
+                id = _context.Preke.LastOrDefault().IdPreke + 1;
+            }
             if (ModelState.IsValid)
             {
+                preke.IdPreke = id;
                 _context.Add(preke);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Create", "aksesuaras", new { id = preke.IdPreke });
@@ -241,7 +272,7 @@ namespace Kleide.Controllers
             {
                 _context.Aksesuaras.Remove(aksesuaras);
             }
-            
+
             _context.Preke.Remove(preke);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
