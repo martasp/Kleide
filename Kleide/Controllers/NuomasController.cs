@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Kleide.Controllers
 {
@@ -13,9 +14,13 @@ namespace Kleide.Controllers
     {
         private readonly KleideContext _context;
 
-        public NuomasController(KleideContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+
+        public NuomasController(KleideContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Nuomas
@@ -45,10 +50,11 @@ namespace Kleide.Controllers
 
             return View(nuoma);
         }
-
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         // GET: Nuomas/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            ViewData["NuomosNumeris"] = id;
             ViewData["FkAsmuoasmensKodas1"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas");
             ViewData["FkAsmuoasmensKodas"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas");
             ViewData["FkMokejimasmokejimoId"] = new SelectList(_context.Mokejimas, "MokejimoId", "MokejimoId");
@@ -64,10 +70,36 @@ namespace Kleide.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(nuoma);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var user = await GetCurrentUserAsync();
+                var userId = user?.Id;
+                nuoma.GrazinimoData = DateTime.Now.AddMonths(1);
+                nuoma.Pvm = 21;
+                nuoma.RezervavimoData = DateTime.Now;
+                nuoma.Kaina = _context.Preke.SingleOrDefault(preke => preke.IdPreke == nuoma.NuomosNumeris).Kaina;
+                nuoma.FkAsmuoasmensKodas = _context.Asmuo.SingleOrDefault(asmuo => asmuo.AsmesnsId == userId).AsmensKodas;
+
+                Mokejimas mokejimas = new Mokejimas
+                {
+                    AtsiskaitymoBūdas = "-",
+                    AtsiėmimoVieta = "Kaunas Studentu Gatve 71",
+                    Data = DateTime.Now,
+                    DraudimoTipas = "Kasko",
+                    MokejimoBusena = "neatliktas",
+                    MokejimoId = nuoma.NuomosNumeris,
+                    NuolaidosSuma = 20,
+                    SumoketaSuma = 0,
+                };
+
+                if (!NuomaExists(nuoma.NuomosNumeris))
+                {
+                    _context.Mokejimas.Add(mokejimas);
+                    _context.Add(nuoma);
+                    await _context.SaveChangesAsync();
+                    return Redirect($"../../mokejimas/Details/{mokejimas.MokejimoId}");
+                }
+                return Redirect($"../../mokejimas/Details/{mokejimas.MokejimoId}");
             }
+
             ViewData["FkAsmuoasmensKodas1"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas", nuoma.FkAsmuoasmensKodas1);
             ViewData["FkAsmuoasmensKodas"] = new SelectList(_context.Asmuo, "AsmensKodas", "AsmensKodas", nuoma.FkAsmuoasmensKodas);
             ViewData["FkMokejimasmokejimoId"] = new SelectList(_context.Mokejimas, "MokejimoId", "MokejimoId", nuoma.FkMokejimasmokejimoId);
