@@ -115,7 +115,7 @@ namespace Kleide.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyInfo));
             }
             return View(asmuo);
         }

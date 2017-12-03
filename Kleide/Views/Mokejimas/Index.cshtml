@@ -59,9 +59,12 @@
                     @Html.DisplayFor(modelItem => item.MokejimoBusena)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.MokejimoId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.MokejimoId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.MokejimoId">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.MokejimoId">Informacija</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.MokejimoId">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.MokejimoId">Delete</a>
+                    }
                 </td>
             </tr>
         }
