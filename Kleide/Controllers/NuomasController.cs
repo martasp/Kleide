@@ -21,8 +21,21 @@ namespace Kleide.Controllers
         // GET: Nuomas
         public async Task<IActionResult> Index()
         {
-            var kleideContext = _context.Nuoma.Include(n => n.FkAsmuoasmensKodas1Navigation).Include(n => n.FkAsmuoasmensKodasNavigation).Include(n => n.FkMokejimasmokejimo);
+            var kleideContext = _context.Nuoma
+                .Include(n => n.FkAsmuoasmensKodas1Navigation)
+                .Include(n => n.FkAsmuoasmensKodasNavigation)
+                .Include(n => n.FkMokejimasmokejimo);
             return View(await kleideContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> Ataskaita()
+        {
+            var nuoma = _context.Nuoma
+                .Include(n => n.NuomosNumeris)
+                .Include(n => n.RezervavimoData)
+                .Include(n => n.GrazinimoData)
+                .Include(n => n.Preke);
+            return View(nuoma);
         }
 
         // GET: Nuomas/Details/5
