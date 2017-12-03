@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -24,6 +25,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Nuomas
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Nuoma.Include(n => n.FkAsmuoasmensKodas1Navigation).Include(n => n.FkAsmuoasmensKodasNavigation).Include(n => n.FkMokejimasmokejimo);
@@ -31,6 +33,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Nuomas/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,6 +55,7 @@ namespace Kleide.Controllers
         }
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         // GET: Nuomas/Create
+        [Authorize]
         public IActionResult Create(int id)
         {
             ViewData["NuomosNumeris"] = id;
@@ -60,12 +64,9 @@ namespace Kleide.Controllers
             ViewData["FkMokejimasmokejimoId"] = new SelectList(_context.Mokejimas, "MokejimoId", "MokejimoId");
             return View();
         }
-
-        // POST: Nuomas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("NuomosNumeris,RezervavimoData,GrazinimoData,Kaina,Pvm,Kuponas,FkMokejimasmokejimoId,FkAsmuoasmensKodas,FkAsmuoasmensKodas1")] Nuoma nuoma)
         {
             if (ModelState.IsValid)
@@ -107,6 +108,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Nuomas/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -130,6 +132,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("NuomosNumeris,RezervavimoData,GrazinimoData,Kaina,Pvm,Kuponas,FkMokejimasmokejimoId,FkAsmuoasmensKodas,FkAsmuoasmensKodas1")] Nuoma nuoma)
         {
             if (id != nuoma.NuomosNumeris)
@@ -164,6 +167,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Nuomas/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

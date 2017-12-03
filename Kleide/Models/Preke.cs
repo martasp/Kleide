@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kleide.Models
@@ -11,6 +12,8 @@ namespace Kleide.Models
         public string Spalva { get; set; }
         public string Aprasymas { get; set; }
         public string Nuotrauka { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? PridejimoData { get; set; }
         public int? NuomosSkaicius { get; set; }
         public string Bukle { get; set; }

@@ -1,71 +1,69 @@
 ﻿@model IEnumerable<Kleide.Models.Mokejimas>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Mokėjimai";
 }
 
-<h2>Index</h2>
+<h2>Mano Mokėjimai</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Data)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SumoketaSuma)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AtsiskaitymoBūdas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DraudimoTipas)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NuolaidosSuma)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AtsiėmimoVieta)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MokejimoBusena)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumoketaSuma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AtsiskaitymoBūdas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DraudimoTipas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NuolaidosSuma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AtsiėmimoVieta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MokejimoBusena)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SumoketaSuma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AtsiskaitymoBūdas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DraudimoTipas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NuolaidosSuma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AtsiėmimoVieta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MokejimoBusena)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MokejimoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MokejimoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MokejimoId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SumoketaSuma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AtsiskaitymoBūdas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DraudimoTipas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuolaidosSuma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AtsiėmimoVieta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MokejimoBusena)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MokejimoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.MokejimoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MokejimoId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

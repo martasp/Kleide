@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -21,6 +22,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Pirkimas
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Pirkimas.Include(p => p.FkAsmuoasmensKodas1Navigation).Include(p => p.FkAsmuoasmensKodasNavigation).Include(p => p.FkMokejimasmokejimo);
@@ -28,6 +30,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Pirkimas/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,6 +52,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Pirkimas/Create
+        [Authorize]
         public IActionResult Create(int id)
         {
             ViewData["UzsakymoNumeris"] = id;
@@ -60,12 +64,14 @@ namespace Kleide.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("UzsakymoNumeris,Data,Kaina,Pvm,Kuponas,ArApdrausta,FkMokejimasmokejimoId,FkAsmuoasmensKodas,FkAsmuoasmensKodas1")] Pirkimas pirkimas)
         {
             if (ModelState.IsValid)
             {
                 var user = await GetCurrentUserAsync();
                 var userId = user?.Id;
+                pirkimas.ArApdrausta = false;
                 pirkimas.Data = DateTime.Now;
                 pirkimas.Pvm = 21;
                 pirkimas.Kaina = _context.Preke.SingleOrDefault(preke => preke.IdPreke == pirkimas.UzsakymoNumeris).Kaina;
@@ -76,7 +82,7 @@ namespace Kleide.Controllers
                     AtsiskaitymoBūdas = "-",
                     AtsiėmimoVieta = "Kaunas Studentu Gatve 71",
                     Data = DateTime.Now,
-                    DraudimoTipas = "Kasko",
+                    DraudimoTipas = "-",
                     MokejimoBusena = "neatliktas",
                     MokejimoId = pirkimas.UzsakymoNumeris,
                     NuolaidosSuma = 20,
@@ -99,6 +105,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Pirkimas/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -122,6 +129,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("UzsakymoNumeris,Data,Kaina,Pvm,Kuponas,ArApdrausta,FkMokejimasmokejimoId,FkAsmuoasmensKodas,FkAsmuoasmensKodas1")] Pirkimas pirkimas)
         {
             if (id != pirkimas.UzsakymoNumeris)
@@ -156,6 +164,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Pirkimas/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -179,6 +188,7 @@ namespace Kleide.Controllers
         // POST: Pirkimas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var pirkimas = await _context.Pirkimas.SingleOrDefaultAsync(m => m.UzsakymoNumeris == id);
