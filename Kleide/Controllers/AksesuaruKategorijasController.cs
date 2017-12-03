@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -19,6 +20,7 @@ namespace Kleide.Controllers
         }
 
         // GET: AksesuaruKategorijas
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.AksesuaruKategorija.ToListAsync());
@@ -43,6 +45,7 @@ namespace Kleide.Controllers
         }
 
         // GET: AksesuaruKategorijas/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -53,10 +56,13 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Pavadinimas,IdAksesuaruKategorija")] AksesuaruKategorija aksesuaruKategorija)
         {
+            var id = _context.AksesuaruKategorija.LastOrDefault().IdAksesuaruKategorija + 1;
             if (ModelState.IsValid)
             {
+                aksesuaruKategorija.IdAksesuaruKategorija = id;
                 _context.Add(aksesuaruKategorija);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -65,6 +71,7 @@ namespace Kleide.Controllers
         }
 
         // GET: AksesuaruKategorijas/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,6 +92,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,IdAksesuaruKategorija")] AksesuaruKategorija aksesuaruKategorija)
         {
             if (id != aksesuaruKategorija.IdAksesuaruKategorija)
@@ -116,6 +124,7 @@ namespace Kleide.Controllers
         }
 
         // GET: AksesuaruKategorijas/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,6 +145,7 @@ namespace Kleide.Controllers
         // POST: AksesuaruKategorijas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var aksesuaruKategorija = await _context.AksesuaruKategorija.SingleOrDefaultAsync(m => m.IdAksesuaruKategorija == id);

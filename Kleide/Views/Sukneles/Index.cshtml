@@ -4,15 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Sukneles</h2>
+<h2>Suknelės</h2>
 <p>
-    @Html.ActionLink("Prekes", "Index", "prekes")
-    @Html.ActionLink("Avalyne", "Index", "avalynes")
+    @Html.ActionLink("Prekės", "Index", "prekes")
+    @Html.ActionLink("Avalynė", "Index", "avalynes")
     @Html.ActionLink("Aksesuarai", "Index", "aksesuaras")
 </p>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@*<p>
+    <a asp-action="Create">Pridėti suknelę</a>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -47,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.Pavadinimas)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SuknelesNumeris">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SuknelesNumeris">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SuknelesNumeris">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.SuknelesNumeris">Keisti</a> |
+                <a asp-action="Details" asp-route-id="@item.SuknelesNumeris">Informacija</a> |
+                <a asp-action="Delete" asp-route-id="@item.SuknelesNumeris">Ištrinti</a>
             </td>
         </tr>
 }

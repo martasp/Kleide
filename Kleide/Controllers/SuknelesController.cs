@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -19,6 +20,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Sukneles
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Suknele.Include(s => s.FkPrekeidPrekeNavigation);
@@ -45,6 +47,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Sukneles/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(int id)
         {
             ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke.Where(p => p.IdPreke == id), "IdPreke", "Pavadinimas");
@@ -56,11 +59,14 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("SuknelesNumeris,Ilgis,Audinys,ModelioTipas,FkPrekeidPreke")] Suknele suknele)
         {
+            var id = suknele.FkPrekeidPreke;
+
             if (ModelState.IsValid)
             {
-
+                suknele.SuknelesNumeris = id;
                 //var suknele = new Suknele { Audinys = prekesuknele.Audinys };
                 //var pake = new Preke { Aksesuaras  = prekesuknele };
                 _context.Suknele.Add(suknele);
@@ -73,6 +79,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Sukneles/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,6 +101,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("SuknelesNumeris,Ilgis,Audinys,ModelioTipas,FkPrekeidPreke")] Suknele suknele)
         {
             if (id != suknele.SuknelesNumeris)
@@ -126,6 +134,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Sukneles/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +156,7 @@ namespace Kleide.Controllers
         // POST: Sukneles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var suknele = await _context.Suknele.SingleOrDefaultAsync(m => m.SuknelesNumeris == id);

@@ -4,33 +4,32 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Ar tikrai norite ištrinti suknelę?</h3>
 <div>
-    <h4>Suknele</h4>
+    <h4>Suknelė</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Ilgis)
+            Ilgis
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Ilgis)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Audinys)
+            Audinys
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Audinys)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ModelioTipas)
+            Modelio tipas
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ModelioTipas)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+            Suknelės prekė
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
@@ -40,6 +39,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="SuknelesNumeris" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Grįžti į sąrašą</a>
     </form>
 </div>

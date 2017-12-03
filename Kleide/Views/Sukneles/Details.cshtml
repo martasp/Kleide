@@ -4,32 +4,32 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Informacija</h2>
 
 <div>
-    <h4>Suknele</h4>
+    <h4>Suknelė</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Ilgis)
+            Ilgis
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Ilgis)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Audinys)
+            Audinys
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Audinys)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ModelioTipas)
+            Modelio tipas
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ModelioTipas)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+            Suknelės prekė
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
@@ -38,5 +38,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.SuknelesNumeris">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Grįžti į sąrašą</a>
 </div>

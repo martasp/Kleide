@@ -4,14 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Prekes</h2>
+<h2>Prekės</h2>
 <p>
-    @Html.ActionLink("Sukneles", "Index", "sukneles")
-    @Html.ActionLink("Avalyne", "Index", "avalynes")
+    @Html.ActionLink("Suknelės", "Index", "sukneles")
+    @Html.ActionLink("Avalynė", "Index", "avalynes")
     @Html.ActionLink("Aksesuarai", "Index", "aksesuaras")
 </p>
 <p>
-    <a asp-action="Create">Pridėti nauja</a>
+    <a asp-action="Create">Pridėti naują</a>
 </p>
 <table class="table">
     <thead>
@@ -100,9 +100,9 @@
                     @Html.DisplayFor(modelItem => item.RezervavimoTipas)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdPreke">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdPreke">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdPreke">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdPreke">Keisti</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdPreke">Informacija</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdPreke">Ištrinti</a>
                 </td>
             </tr>
         }

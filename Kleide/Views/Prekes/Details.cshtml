@@ -4,38 +4,38 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Informacija</h2>
 
 <div>
-    <h4>Preke</h4>
+    <h4>Prekė</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Pavadinimas)
+            Pavadinimas
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Pavadinimas)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Dydis)
+            Dydis
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Dydis)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Spalva)
+            Spalva
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Spalva)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Aprasymas)
+            Aprašymas
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Aprasymas)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Nuotrauka)
+            Nuotrauka
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nuotrauka)
@@ -47,25 +47,25 @@
             @Html.DisplayFor(model => model.PridejimoData)
         </dd>
         <dt>
-            Nuomos skaicius
+            Nuomos skaičius
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NuomosSkaicius)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Bukle)
+            Būklė
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Bukle)
         </dd>
         <dt>
-            Pagaminimo salis
+            Pagaminimo šalis
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PagaminimoSalis)
         </dd>
         <dt>
-            Ranku darbo
+            Rankų darbo
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ArRankuDarbo)
@@ -76,21 +76,21 @@
         <dd>
             @Html.DisplayFor(model => model.RezervavimoTipas)
         </dd>
-        <dt>
-            Nuomos numeris
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FkNuomanuomosNumerisNavigation.NuomosNumeris)
-        </dd>
-        <dt>
-            Pirkimo numeris
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FkPirkimasuzsakymoNumerisNavigation.UzsakymoNumeris)
-        </dd>
-        <dt>
-            Sandelys
-        </dt>
+        @* <dt>
+                Nuomos numeris
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FkNuomanuomosNumerisNavigation.NuomosNumeris)
+            </dd>
+            <dt>
+                Pirkimo numeris
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FkPirkimasuzsakymoNumerisNavigation.UzsakymoNumeris)
+            </dd>
+            <dt>
+                Sandelys
+            </dt>*@
         <dd>
             @Html.DisplayFor(model => model.FkSandelysidSandelysNavigation.IdSandelys)
         </dd>
@@ -98,5 +98,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.IdPreke">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Grįžti į sąrašą</a>
 </div>

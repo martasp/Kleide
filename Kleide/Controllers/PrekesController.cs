@@ -28,6 +28,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes admin
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Preke.Include(p => p.FkNuomanuomosNumerisNavigation).Include(p => p.FkPirkimasuzsakymoNumerisNavigation).Include(p => p.FkSandelysidSandelysNavigation);
@@ -64,6 +65,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["Nuotraukos"] = new SelectList(new List<String>() { "/Aksesuaras.jpg", "/DeloreSuknele.jpg", "/JuodaSuknele.jpg" });
@@ -78,6 +80,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create1([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
             var id = _context.Preke.LastOrDefault().IdPreke + 1;
@@ -99,6 +102,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create2([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
             if (ModelState.IsValid)
@@ -118,6 +122,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create3([Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
             if (ModelState.IsValid)
@@ -133,6 +138,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -156,6 +162,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Pavadinimas,Kaina,Dydis,Spalva,Aprasymas,Nuotrauka,PridejimoData,NuomosSkaicius,Bukle,PagaminimoSalis,ArRankuDarbo,RezervavimoTipas,IdPreke,FkPirkimasuzsakymoNumeris,FkNuomanuomosNumeris,FkSandelysidSandelys")] Preke preke)
         {
 
@@ -191,6 +198,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Prekes/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -214,6 +222,7 @@ namespace Kleide.Controllers
         // POST: Prekes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var suknele = await _context.Suknele.SingleOrDefaultAsync(m => m.FkPrekeidPreke == id);

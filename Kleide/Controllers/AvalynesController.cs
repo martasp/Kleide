@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -19,6 +20,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Avalynes
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Avalyne.Include(a => a.FkPrekeidPrekeNavigation);
@@ -45,6 +47,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Avalynes/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(int id)
         {
             ViewData["FkPrekeidPreke"] = new SelectList(_context.Preke.Where(p => p.IdPreke == id), "IdPreke", "Pavadinimas");
@@ -56,10 +59,13 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("MedziagosTipas,Uzsegimas,Pobudis,SuKulniuku,Lytis,IdAvalyne,FkPrekeidPreke")] Avalyne avalyne)
         {
+            var id = avalyne.FkPrekeidPreke;
             if (ModelState.IsValid)
             {
+                avalyne.IdAvalyne = id;
                 _context.Add(avalyne);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -69,6 +75,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Avalynes/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,6 +97,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("MedziagosTipas,Uzsegimas,Pobudis,SuKulniuku,Lytis,IdAvalyne,FkPrekeidPreke")] Avalyne avalyne)
         {
             if (id != avalyne.IdAvalyne)
@@ -122,6 +130,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Avalynes/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,6 +152,7 @@ namespace Kleide.Controllers
         // POST: Avalynes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var avalyne = await _context.Avalyne.SingleOrDefaultAsync(m => m.IdAvalyne == id);

@@ -4,19 +4,18 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
 
-<h4>Suknele</h4>
+<h4>Suknelės pridėjimas</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="SuknelesNumeris" class="control-label"></label>
                 <input asp-for="SuknelesNumeris" class="form-control" />
                 <span asp-validation-for="SuknelesNumeris" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Ilgis" class="control-label"></label>
                 <input asp-for="Ilgis" class="form-control" />
@@ -28,12 +27,12 @@
                 <span asp-validation-for="Audinys" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ModelioTipas" class="control-label"></label>
+                <label asp-for="ModelioTipas" class="control-label">Modelio tipas</label>
                 <input asp-for="ModelioTipas" class="form-control" />
                 <span asp-validation-for="ModelioTipas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FkPrekeidPreke" class="control-label">Priklauso prekei: </label>
+                <label asp-for="FkPrekeidPreke" class="control-label">Suknelės prekė</label>
                 <select asp-for="FkPrekeidPreke" class ="form-control" asp-items="ViewBag.FkPrekeidPreke"></select>
             </div>
             <div class="form-group">
@@ -44,7 +43,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Grįžti į sąrašą</a>
 </div>
 
 @section Scripts {

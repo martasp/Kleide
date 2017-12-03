@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -19,6 +20,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Aksesuaras
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var kleideContext = _context.Aksesuaras.Include(a => a.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation).Include(a => a.FkPrekeidPrekeNavigation);
@@ -46,6 +48,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Aksesuaras/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(int id)
         {
             ViewData["FkAksesuaruKategorijaidAksesuaruKategorija"] = new SelectList(_context.AksesuaruKategorija, "IdAksesuaruKategorija", "Pavadinimas");
@@ -58,10 +61,14 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("MetaloTipas,ArSuGrandinele,ArElektroninis,Lytis,IdAksesuaras,FkAksesuaruKategorijaidAksesuaruKategorija,FkPrekeidPreke")] Aksesuaras aksesuaras)
         {
+            var id = aksesuaras.FkPrekeidPreke;
+            
             if (ModelState.IsValid)
             {
+                aksesuaras.IdAksesuaras = id;
                 _context.Add(aksesuaras);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -72,6 +79,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Aksesuaras/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,6 +102,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("MetaloTipas,ArSuGrandinele,ArElektroninis,Lytis,IdAksesuaras,FkAksesuaruKategorijaidAksesuaruKategorija,FkPrekeidPreke")] Aksesuaras aksesuaras)
         {
             if (id != aksesuaras.IdAksesuaras)
@@ -127,6 +136,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Aksesuaras/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,6 +159,7 @@ namespace Kleide.Controllers
         // POST: Aksesuaras/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var aksesuaras = await _context.Aksesuaras.SingleOrDefaultAsync(m => m.IdAksesuaras == id);

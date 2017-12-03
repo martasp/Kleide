@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h4>Preke</h4>
+<h4>Prekė</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -31,7 +31,7 @@
                 <span asp-validation-for="Kaina" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Aprasymas" class="control-label"></label>
+                <label asp-for="Aprasymas" class="control-label">Aprašymas</label>
                 <input asp-for="Aprasymas" class="form-control" />
                 <span asp-validation-for="Aprasymas" class="text-danger"></span>
             </div>
@@ -41,27 +41,27 @@
                 <span asp-validation-for="Nuotrauka" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PridejimoData" class="control-label">Pridejimo data</label>
+                <label asp-for="PridejimoData" class="control-label">Pridėjimo data</label>
                 <input asp-for="PridejimoData" class="form-control" />
                 <span asp-validation-for="PridejimoData" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NuomosSkaicius" class="control-label">Nuomos skaicius</label>
+                <label asp-for="NuomosSkaicius" class="control-label">Nuomos skaičius</label>
                 <input asp-for="NuomosSkaicius" class="form-control" />
                 <span asp-validation-for="NuomosSkaicius" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Bukle" class="control-label"></label>
+                <label asp-for="Bukle" class="control-label">Būklė</label>
                 <input asp-for="Bukle" class="form-control" />
                 <span asp-validation-for="Bukle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PagaminimoSalis" class="control-label">Pagaminimo salis</label>
+                <label asp-for="PagaminimoSalis" class="control-label">Pagaminimo šalis</label>
                 <input asp-for="PagaminimoSalis" class="form-control" />
                 <span asp-validation-for="PagaminimoSalis" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArRankuDarbo" class="control-label">Ranku darbo</label>
+                <label asp-for="ArRankuDarbo" class="control-label">Rankų darbo</label>
                 <input asp-for="ArRankuDarbo" class="form-control" />
                 <span asp-validation-for="ArRankuDarbo" class="text-danger"></span>
             </div>
@@ -71,7 +71,7 @@
                 <span asp-validation-for="RezervavimoTipas" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="IdPreke" />
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="FkPirkimasuzsakymoNumeris" class="control-label">Pirkimo numeris</label>
                 <select asp-for="FkPirkimasuzsakymoNumeris" class="form-control" asp-items="ViewBag.FkPirkimasuzsakymoNumeris"></select>
                 <span asp-validation-for="FkPirkimasuzsakymoNumeris" class="text-danger"></span>
@@ -85,7 +85,7 @@
                 <label asp-for="FkSandelysidSandelys" class="control-label">Sandelys</label>
                 <select asp-for="FkSandelysidSandelys" class="form-control" asp-items="ViewBag.FkSandelysidSandelys"></select>
                 <span asp-validation-for="FkSandelysidSandelys" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -94,7 +94,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Grįžti į sąrašą</a>
 </div>
 
 @section Scripts {

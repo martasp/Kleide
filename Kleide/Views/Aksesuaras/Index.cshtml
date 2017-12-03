@@ -6,14 +6,14 @@
 
 <h2>Aksesuarai</h2>
 <p>
-    @Html.ActionLink("Prekes", "Index", "prekes")
-    @Html.ActionLink("Sukneles", "Index", "sukneles")
-    @Html.ActionLink("Avalyne", "Index", "avalynes")
-    @Html.ActionLink("Aksesuaru kategorijos", "Index", "aksesuarukategorijas")
+    @Html.ActionLink("Prekės", "Index", "prekes")
+    @Html.ActionLink("Suknelės", "Index", "sukneles")
+    @Html.ActionLink("Avalynė", "Index", "avalynes")
+    @Html.ActionLink("Aksesuarų kategorijos", "Index", "aksesuarukategorijas")
 </p>
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -60,9 +60,9 @@
                 @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.Pavadinimas)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAksesuaras">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAksesuaras">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAksesuaras">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdAksesuaras">Keisti</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAksesuaras">Informacija</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAksesuaras">Ištrinti</a>
             </td>
         </tr>
 }

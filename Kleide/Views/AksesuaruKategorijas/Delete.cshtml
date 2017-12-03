@@ -4,15 +4,14 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Ar tikrai norite panaikinti šią kategoriją?</h3>
 <div>
-    <h4>AksesuaruKategorija</h4>
+    <h4>Aksesuarų kategorija</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Pavadinimas)
+            Pavadinimas
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Pavadinimas)
@@ -22,6 +21,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdAksesuaruKategorija" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Grįžti į sąrašą</a>
     </form>
 </div>
