@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Kleide.Models.Aksesuaras>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Aksesuarai</h2>
+<p>
+    @Html.ActionLink("Prekės", "Index", "prekes")
+    @Html.ActionLink("Suknelės", "Index", "sukneles")
+    @Html.ActionLink("Avalynė", "Index", "avalynes")
+    @Html.ActionLink("Aksesuarų kategorijos", "Index", "aksesuarukategorijas")
+</p>
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Metalo tipas
+            </th>
+            <th>
+                Su grandinele
+            </th>
+            <th>
+                Elektroninis
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lytis)
+            </th>
+            <th>
+                Aksesuaro kategorija
+            </th>
+            <th>
+                Aksesuaro preke
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaloTipas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArSuGrandinele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArElektroninis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lytis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkAksesuaruKategorijaidAksesuaruKategorijaNavigation.Pavadinimas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.Pavadinimas)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAksesuaras">Keisti</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAksesuaras">Informacija</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAksesuaras">Ištrinti</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

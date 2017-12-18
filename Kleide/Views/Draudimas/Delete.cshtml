@@ -1,0 +1,63 @@
+﻿@model Kleide.Models.Draudimas
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Draudimas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PradziosData)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PradziosData)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PabaigosData)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PabaigosData)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DraudimoSuma)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DraudimoSuma)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiekejas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tiekejas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pobudis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pobudis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DraudimoNumeris)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DraudimoNumeris)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FkPrekeidPrekeNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdDraudimas" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

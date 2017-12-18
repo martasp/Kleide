@@ -1,0 +1,84 @@
+﻿@model Kleide.Models.Sandelys
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sandelys</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kiekis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kiekis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PrekesBukle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PrekesBukle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Miestas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Miestas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PastoKodas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PastoKodas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GatvėsPavadinimas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GatvėsPavadinimas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KontaktinisAsmuo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KontaktinisAsmuo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Salis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Salis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SandelioDydis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SandelioDydis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DarbuotojuKiekis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DarbuotojuKiekis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DarboMasinosKiekis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DarboMasinosKiekis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PrekesTipas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PrekesTipas)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdSandelys">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

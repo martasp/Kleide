@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kleide.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kleide.Controllers
 {
@@ -21,12 +22,14 @@ namespace Kleide.Controllers
         }
 
         // GET: Asmuos
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Asmuo.ToListAsync());
         }
 
         // GET: Asmuos/Details/5
+        [Authorize]
         public async Task<IActionResult> MyInfo()
         {
             var user = await GetCurrentUserAsync();
@@ -42,6 +45,7 @@ namespace Kleide.Controllers
         }
 
         // GET: Asmuos/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -52,6 +56,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("AsmensKodas,Vardas,Pavarde,Telefonas,Miestas,Salis,Adresas,PastoKodas")] Asmuo asmuo)
         {
             if (ModelState.IsValid)
@@ -67,6 +72,7 @@ namespace Kleide.Controllers
         }
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         // GET: Asmuos/myInfo
+        [Authorize]
         public async Task<IActionResult> MyInfoEdit()
         {
             var user = await GetCurrentUserAsync();
@@ -84,6 +90,7 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(string id, [Bind("AsmesnsId,AsmensKodas,Vardas,Pavarde,Telefonas,Miestas,Salis,Adresas,PastoKodas")] Asmuo asmuo)
         {
             var user = await GetCurrentUserAsync();
@@ -107,12 +114,13 @@ namespace Kleide.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyInfo));
             }
             return View(asmuo);
         }
 
         // GET: Asmuos/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,6 +141,7 @@ namespace Kleide.Controllers
         // POST: Asmuos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var asmuo = await _context.Asmuo.SingleOrDefaultAsync(m => m.AsmensKodas == id);

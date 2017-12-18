@@ -21,8 +21,8 @@ namespace Kleide.Controllers
         // GET: Ataskaitu
         public async Task<IActionResult> Index()
         {
-            var kleideContext = _context.Nuoma.Where(nuoma=> nuoma.RezervavimoData==new DateTime(2016)).Include(n => n.FkAsmuoasmensKodas1Navigation).Include(n => n.FkAsmuoasmensKodasNavigation).Include(n => n.FkMokejimasmokejimo);
-            return View(await kleideContext.ToListAsync());
+            var kleideContextCount = _context.Preke.Count();
+            return View("PrekiuKiekis", kleideContextCount);
         }
 
         //// GET: Ataskaitu/Details/5

@@ -1,10 +1,9 @@
 ﻿@model Kleide.Models.Pirkimas
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Pirkimo Informacija";
 }
 
-<h2>Details</h2>
 
 <div>
     <h4>Pirkimas</h4>
@@ -39,24 +38,6 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ArApdrausta)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FkAsmuoasmensKodas1Navigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FkAsmuoasmensKodas1Navigation.AsmensKodas)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FkAsmuoasmensKodasNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FkAsmuoasmensKodasNavigation.AsmensKodas)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FkMokejimasmokejimo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FkMokejimasmokejimo.MokejimoId)
         </dd>
     </dl>
 </div>

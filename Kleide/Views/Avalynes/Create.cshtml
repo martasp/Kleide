@@ -1,0 +1,60 @@
+﻿@model Kleide.Models.Avalyne
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Avalynės pridėjimas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MedziagosTipas" class="control-label">Medziagos tipas</label>
+                <input asp-for="MedziagosTipas" class="form-control" />
+                <span asp-validation-for="MedziagosTipas" class="text-danger">Medžiagos tipas</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uzsegimas" class="control-label">Užsegimas</label>
+                <input asp-for="Uzsegimas" class="form-control" />
+                <span asp-validation-for="Uzsegimas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pobudis" class="control-label">Pobūdis</label>
+                <input asp-for="Pobudis" class="form-control" />
+                <span asp-validation-for="Pobudis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SuKulniuku" class="control-label">Su kulniuku</label>
+                <input asp-for="SuKulniuku" class="form-control" />
+                <span asp-validation-for="SuKulniuku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lytis" class="control-label"></label>
+                <input asp-for="Lytis" class="form-control" />
+                <span asp-validation-for="Lytis" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="IdAvalyne" class="control-label"></label>
+                <input asp-for="IdAvalyne" class="form-control" />
+                <span asp-validation-for="IdAvalyne" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="FkPrekeidPreke" class="control-label">Avalynes prekė</label>
+                <select asp-for="FkPrekeidPreke" class ="form-control" asp-items="ViewBag.FkPrekeidPreke"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Grįžti į sąrašą</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

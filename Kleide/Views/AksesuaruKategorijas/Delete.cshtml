@@ -1,0 +1,26 @@
+﻿@model Kleide.Models.AksesuaruKategorija
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Ar tikrai norite panaikinti šią kategoriją?</h3>
+<div>
+    <h4>Aksesuarų kategorija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Pavadinimas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pavadinimas)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdAksesuaruKategorija" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Grįžti į sąrašą</a>
+    </form>
+</div>

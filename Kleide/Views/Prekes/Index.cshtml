@@ -4,14 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Prekės</h2>
 <p>
-    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Suknelės", "Index", "sukneles")
+    @Html.ActionLink("Avalynė", "Index", "avalynes")
+    @Html.ActionLink("Aksesuarai", "Index", "aksesuaras")
+</p>
+<p>
+    <a asp-action="Create">Pridėti naują</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+<<<<<<< HEAD
                 <th>
                     @Html.DisplayNameFor(model => model.Pavadinimas)
                 </th>
@@ -46,10 +51,47 @@
                     @Html.DisplayNameFor(model => model.RezervavimoTipas)
                 </th>
          
+=======
+            <th>
+                @Html.DisplayNameFor(model => model.Pavadinimas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dydis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Spalva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aprasymas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nuotrauka)
+            </th>
+            <th>
+                Pridejimo data
+            </th>
+            <th>
+                Nuomos skaicius
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bukle)
+            </th>
+            <th>
+                Pagaminimo salis
+            </th>
+            <th>
+                Ar ranku darbo
+            </th>
+            <th>
+                Rezervavimo tipas
+            </th>
+
+>>>>>>> d11fd27e475b0029d8e666a784ee94de120753ce
             <th></th>
         </tr>
     </thead>
     <tbody>
+<<<<<<< HEAD
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -92,6 +134,60 @@
             </td>
         </tr>
 }
+=======
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pavadinimas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dydis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Spalva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aprasymas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nuotrauka)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PridejimoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuomosSkaicius)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bukle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PagaminimoSalis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArRankuDarbo) 
+                    @* @Html.DisplayFor(modelItem => item.ArRankuDarbo)*@
+                    @if (@item.ArRankuDarbo.Value)
+                    {
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RezervavimoTipas)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPreke">Keisti</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdPreke">Informacija</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdPreke">Ištrinti</a>
+                </td>
+            </tr>
+        }
+>>>>>>> d11fd27e475b0029d8e666a784ee94de120753ce
     </tbody>
 
     @model[0].Spalva

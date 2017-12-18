@@ -1,0 +1,56 @@
+﻿@model Kleide.Models.Avalyne
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Ar tikrai norite ištrinti šią avalynę?</h3>
+<div>
+    <h4>Avalynė</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Medžiagos tipas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MedziagosTipas)
+        </dd>
+        <dt>
+            Užsegimas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uzsegimas)
+        </dd>
+        <dt>
+            Pobūdis
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pobudis)
+        </dd>
+        <dt>
+            Su kulniuku
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SuKulniuku)
+        </dd>
+        <dt>
+            Lytis
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lytis)
+        </dd>
+        <dt>
+            Avalynes prekė
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdAvalyne" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Grįžti į sąrašą</a>
+    </form>
+</div>

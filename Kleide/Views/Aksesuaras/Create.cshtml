@@ -1,0 +1,60 @@
+﻿@model Kleide.Models.Aksesuaras
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Aksesuaro pridėjimas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MetaloTipas" class="control-label">Metalo tipas</label>
+                <input asp-for="MetaloTipas" class="form-control" />
+                <span asp-validation-for="MetaloTipas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArSuGrandinele" class="control-label">Su grandinėle</label>
+                <input asp-for="ArSuGrandinele" class="form-control" />
+                <span asp-validation-for="ArSuGrandinele" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArElektroninis" class="control-label">Elektroninis</label>
+                <input asp-for="ArElektroninis" class="form-control" />
+                <span asp-validation-for="ArElektroninis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lytis" class="control-label"></label>
+                <input asp-for="Lytis" class="form-control" />
+                <span asp-validation-for="Lytis" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="IdAksesuaras" class="control-label"></label>
+                <input asp-for="IdAksesuaras" class="form-control" />
+                <span asp-validation-for="IdAksesuaras" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="FkAksesuaruKategorijaidAksesuaruKategorija" class="control-label">Aksesuaro kategorija</label>
+                <select asp-for="FkAksesuaruKategorijaidAksesuaruKategorija" class ="form-control" asp-items="ViewBag.FkAksesuaruKategorijaidAksesuaruKategorija"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkPrekeidPreke" class="control-label">Aksesuaro prekė</label>
+                <select asp-for="FkPrekeidPreke" class ="form-control" asp-items="ViewBag.FkPrekeidPreke"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Grįžti į sąrašą</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

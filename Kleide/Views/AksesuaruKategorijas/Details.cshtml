@@ -1,0 +1,24 @@
+﻿@model Kleide.Models.AksesuaruKategorija
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Informacija</h2>
+
+<div>
+    <h4>Aksesuarų kategorija</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Pavadinimas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pavadinimas)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAksesuaruKategorija">Keisti</a> |
+    <a asp-action="Index">Grįžti į sąrašą</a>
+</div>

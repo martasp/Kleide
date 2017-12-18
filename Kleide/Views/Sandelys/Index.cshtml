@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Kleide.Models.Sandelys>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kiekis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrekesBukle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Miestas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PastoKodas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GatvėsPavadinimas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KontaktinisAsmuo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SandelioDydis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DarbuotojuKiekis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DarboMasinosKiekis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrekesTipas)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kiekis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrekesBukle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miestas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PastoKodas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GatvėsPavadinimas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KontaktinisAsmuo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SandelioDydis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DarbuotojuKiekis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DarboMasinosKiekis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrekesTipas)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSandelys">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSandelys">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSandelys">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

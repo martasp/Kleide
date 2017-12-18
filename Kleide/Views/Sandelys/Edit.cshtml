@@ -1,0 +1,81 @@
+﻿@model Kleide.Models.Sandelys
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Sandelys</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kiekis" class="control-label"></label>
+                <input asp-for="Kiekis" class="form-control" />
+                <span asp-validation-for="Kiekis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrekesBukle" class="control-label"></label>
+                <input asp-for="PrekesBukle" class="form-control" />
+                <span asp-validation-for="PrekesBukle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Miestas" class="control-label"></label>
+                <input asp-for="Miestas" class="form-control" />
+                <span asp-validation-for="Miestas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PastoKodas" class="control-label"></label>
+                <input asp-for="PastoKodas" class="form-control" />
+                <span asp-validation-for="PastoKodas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GatvėsPavadinimas" class="control-label"></label>
+                <input asp-for="GatvėsPavadinimas" class="form-control" />
+                <span asp-validation-for="GatvėsPavadinimas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KontaktinisAsmuo" class="control-label"></label>
+                <input asp-for="KontaktinisAsmuo" class="form-control" />
+                <span asp-validation-for="KontaktinisAsmuo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salis" class="control-label"></label>
+                <input asp-for="Salis" class="form-control" />
+                <span asp-validation-for="Salis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SandelioDydis" class="control-label"></label>
+                <input asp-for="SandelioDydis" class="form-control" />
+                <span asp-validation-for="SandelioDydis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DarbuotojuKiekis" class="control-label"></label>
+                <input asp-for="DarbuotojuKiekis" class="form-control" />
+                <span asp-validation-for="DarbuotojuKiekis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DarboMasinosKiekis" class="control-label"></label>
+                <input asp-for="DarboMasinosKiekis" class="form-control" />
+                <span asp-validation-for="DarboMasinosKiekis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrekesTipas" class="control-label"></label>
+                <input asp-for="PrekesTipas" class="form-control" />
+                <span asp-validation-for="PrekesTipas" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="IdSandelys" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

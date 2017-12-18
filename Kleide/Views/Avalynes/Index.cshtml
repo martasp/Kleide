@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Kleide.Models.Avalyne>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Avalynė</h2>
+<p>
+    @Html.ActionLink("Prekės", "Index", "prekes")
+    @Html.ActionLink("Suknelės", "Index", "sukneles")
+    @Html.ActionLink("Aksesuarai", "Index", "aksesuaras")
+</p>
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Medziagos tipas
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uzsegimas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pobudis)
+            </th>
+            <th>
+                Su kulniuku
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lytis)
+            </th>
+            <th>
+                Avalynes preke
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedziagosTipas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uzsegimas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pobudis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuKulniuku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lytis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkPrekeidPrekeNavigation.Pavadinimas)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAvalyne">Keisti</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAvalyne">Informacija</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAvalyne">Ištrinti</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

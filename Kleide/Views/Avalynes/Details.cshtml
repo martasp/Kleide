@@ -1,0 +1,54 @@
+﻿@model Kleide.Models.Avalyne
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Informacija</h2>
+
+<div>
+    <h4>Avalynė</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Medžiagos tipas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MedziagosTipas)
+        </dd>
+        <dt>
+            Užsegimas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Uzsegimas)
+        </dd>
+        <dt>
+            Pobūdis
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pobudis)
+        </dd>
+        <dt>
+            Su kulniuku
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SuKulniuku)
+        </dd>
+        <dt>
+            Lytis
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lytis)
+        </dd>
+        <dt>
+            Avalynes prekė
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FkPrekeidPrekeNavigation.IdPreke)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAvalyne">Edit</a> |
+    <a asp-action="Index">Grįžti į sąrašą</a>
+</div>

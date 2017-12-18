@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Kleide.Models.Preke>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@*Krepas*@
+@*<div class="container-fluid"
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+
+
+
+    @for (int i = 0; i < Model.Count() / 3; i++)
+    {
+        var list = Model.ToList();
+        Preke item = list[i];
+
+        <div class="col-md-12">
+        <div class="thumbnail">
+        <img src="@item.Nuotrauka" alt="foto">
+        <div class="caption">
+        <h3>@item.Pavadinimas</h3>
+        <p>@item.Aprasymas</p>
+        <p>@item.Kaina €</p>
+        @if (User.IsInRole("Admin"))
+        {
+                                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPreke">Keisti</a>
+                                <a class="btn btn-success" asp-action="Delete" asp-route-id="@item.IdPreke">Šalinti</a>
+        }
+        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.IdPreke">Informacija</a>
+        <a class="btn btn-success" asp-action="../pirkimas/create" asp-route-id="@item.IdPreke">Pirkti</a>
+        <a class="btn btn-success" asp-action="../nuomas/create" asp-route-id="@item.IdPreke">Nuomotis</a>
+        </div>
+        </div>
+        </div>
+        list.Remove(item);
+    }
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+
+
+
+    @for (int i = 0; i < Model.Count() / 3; i++)
+                {
+                    var list = Model.ToList();
+                    Preke item = list[i];
+
+        <div class="col-md-12">
+        <div class="thumbnail">
+        <img src="@item.Nuotrauka" alt="foto">
+        <div class="caption">
+        <h3>@item.Pavadinimas</h3>
+        <p>@item.Aprasymas</p>
+        <p>@item.Kaina €</p>
+        @if (User.IsInRole("Admin"))
+        {
+                                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPreke">Keisti</a>
+                                    <a class="btn btn-success" asp-action="Delete" asp-route-id="@item.IdPreke">Šalinti</a>
+        }
+        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.IdPreke">Informacija</a>
+        <a class="btn btn-success" asp-action="../pirkimas/create" asp-route-id="@item.IdPreke">Pirkti</a>
+        <a class="btn btn-success" asp-action="../nuomas/create" asp-route-id="@item.IdPreke">Nuomotis</a>
+        </div>
+        </div>
+        </div>
+        list.Remove(item);
+    }
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+
+
+
+    @for (int i = 0; i < Model.Count() / 3; i++)
+                {
+                    var list = Model.ToList();
+                    Preke item = list[i];
+
+        <div class="col-md-12">
+        <div class="thumbnail">
+        <img src="@item.Nuotrauka" alt="foto">
+        <div class="caption">
+        <h3>@item.Pavadinimas</h3>
+        <p>@item.Aprasymas</p>
+        <p>@item.Kaina €</p>
+        @if (User.IsInRole("Admin"))
+        {
+                                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPreke">Keisti</a>
+                                    <a class="btn btn-success" asp-action="Delete" asp-route-id="@item.IdPreke">Šalinti</a>
+        }
+        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.IdPreke">Informacija</a>
+        <a class="btn btn-success" asp-action="../pirkimas/create" asp-route-id="@item.IdPreke">Pirkti</a>
+        <a class="btn btn-success" asp-action="../nuomas/create" asp-route-id="@item.IdPreke">Nuomotis</a>
+        </div>
+        </div>
+        </div>
+        list.Remove(item);
+    }
+
+            </div>
+        </div>
+    </div>
+        </div>*@
+
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@item.Nuotrauka" alt="foto">
+                <div class="caption">
+                    <h3>@item.Pavadinimas</h3>
+                    <p>@item.Aprasymas</p>
+                    <p>@item.Kaina €</p>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPreke">Keisti</a>
+                        <a class="btn btn-success" asp-action="Delete" asp-route-id="@item.IdPreke">Šalinti</a>
+                    }
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.IdPreke">Informacija</a>
+                    <a class="btn btn-success" asp-action="../pirkimas/create" asp-route-id="@item.IdPreke">Pirkti</a>
+                    <a class="btn btn-success" asp-action="../nuomas/create" asp-route-id="@item.IdPreke">Nuomotis</a>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

@@ -260,7 +260,7 @@ namespace Kleide.Migrations
                         .HasMaxLength(255)
                         .IsUnicode(false);
 
-                    b.Property<double?>("AtsiėmimoVieta")
+                    b.Property<string>("AtsiėmimoVieta")
                         .HasColumnName("atsiėmimo_vieta");
 
                     b.Property<DateTime?>("Data")
@@ -341,13 +341,13 @@ namespace Kleide.Migrations
                         .HasColumnName("data")
                         .HasColumnType("date");
 
-                    b.Property<int>("FkAsmuoasmensKodas")
+                    b.Property<int?>("FkAsmuoasmensKodas")
                         .HasColumnName("fk_Asmuoasmens_kodas");
 
-                    b.Property<int>("FkAsmuoasmensKodas1")
+                    b.Property<int?>("FkAsmuoasmensKodas1")
                         .HasColumnName("fk_Asmuoasmens_kodas1");
 
-                    b.Property<int>("FkMokejimasmokejimoId")
+                    b.Property<int?>("FkMokejimasmokejimoId")
                         .HasColumnName("fk_Mokejimasmokejimo_id");
 
                     b.Property<double?>("Kaina")
@@ -401,6 +401,8 @@ namespace Kleide.Migrations
 
                     b.Property<int?>("FkSandelysidSandelys")
                         .HasColumnName("fk_Sandelysid_Sandelys");
+
+                    b.Property<int>("Kaina");
 
                     b.Property<int?>("NuomosSkaicius")
                         .HasColumnName("nuomos_skaicius");
