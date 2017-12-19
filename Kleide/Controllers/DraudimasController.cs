@@ -56,8 +56,19 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PradziosData,PabaigosData,DraudimoSuma,Tiekejas,Pobudis,DraudimoNumeris,IdDraudimas,FkPrekeidPreke")] Draudimas draudimas)
+        public async Task<IActionResult> Create([Bind("PradziosData,PabaigosData,DraudimoSuma,Tiekejas,Pobudis,DraudimoNumeris,FkPrekeidPreke")] Draudimas draudimas)
         {
+            var last = 0;
+            if (_context.Draudimas.Count() == 0)
+            {
+                draudimas.IdDraudimas = 0;
+            }
+            else
+            {
+                last = _context.Draudimas.Last().IdDraudimas;
+                last++;
+                draudimas.IdDraudimas = last;
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(draudimas);

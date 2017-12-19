@@ -53,10 +53,18 @@ namespace Kleide.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Kiekis,PrekesBukle,Miestas,PastoKodas,GatvėsPavadinimas,KontaktinisAsmuo,Salis,SandelioDydis,DarbuotojuKiekis,DarboMasinosKiekis,PrekesTipas,IdSandelys")] Sandelys sandelys)
+        public async Task<IActionResult> Create([Bind("Kiekis,PrekesBukle,Miestas,PastoKodas,GatvėsPavadinimas,KontaktinisAsmuo,Salis,SandelioDydis,DarbuotojuKiekis,DarboMasinosKiekis,PrekesTipas")] Sandelys sandelys)
         {
             if (ModelState.IsValid)
             {
+                var last = 0;
+                if (_context.Sandelys.Count() == 0)
+                {
+                    last = 0;
+                }
+                else last = _context.Sandelys.Last().IdSandelys;
+                last++;
+                sandelys.IdSandelys = last;
                 _context.Add(sandelys);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
